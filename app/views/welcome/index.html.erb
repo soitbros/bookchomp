@@ -1,18 +1,27 @@
-<%= form_for Post.new, url: posts_path, html: { multipart: true } do |form| %>
-  <%= form.text_field :title %>
-  <%= form.file_field :image %>
-  <%= form.submit "Upload File" %>
-<% end %>
+<div class="box">
+  <h1>BookChomp</h1>
 
-<div  ng-controller="PostsController">
-  <div ng-repeat="post in posts">
-    {{ post.title }}, {{ post.body }}, {{ post.image_file_name }}, {{ post.id }}
+  <div class="form">
+    <%= form_for Post.new, url: posts_path, html: { multipart: true } do |form| %>
+      <%= form.text_field :title %>
+      <%= form.file_field :image %>
+      <%= form.submit "Upload File" %>
+    <% end %>
   </div>
-</div>
 
-<!-- <form ng-submit="createPost()"> -->
-  <!-- <input type="text" ng-model="newPost.title">
-  <input type="text" ng-model="newPost.body">
-  <input type="file" ng-model="newPost.image"/> -->
-  <!-- <input type="submit"> -->
-<!-- </form> -->
+  <div class="container" ng-controller="PostsController">
+    <div ng-repeat="post in posts">
+      Chomps available for {{post.title}}<br />
+      <a href="/posts/{{ post.id }}/chomp?size=taste">Taste</a> |
+      <a href="/posts/{{ post.id }}/chomp?size=nibble">Nibble</a> |
+      <a href="/posts/{{ post.id }}/chomp?size=bite">Bite</a> |
+      <a href="/posts/{{ post.id }}/chomp?size=appetizer">Appetizer</a> |
+      <a href="/posts/{{ post.id }}/chomp?size=entree">Entree</a> |
+      <a href="/posts/{{ post.id }}/chomp?size=feast">Feast</a> |
+      <a href="/posts/{{ post.id }}/chomp?size=buffet">Buffet</a> |
+      <a href="/posts/{{ post.id }}/chomp?size">Full Chomp</a>
+    </div>
+  </div>
+
+  <span class="hi">?<span class="info">Upload any text of any size and let BookChomp create a delicious set of samples. Choose from a tiny taste to a full chomp of all the data, randomly recomposed for your pleasure. Just copy the relevant link. Warning: chomps are only as quality as the text going in.</span></span>
+</div>

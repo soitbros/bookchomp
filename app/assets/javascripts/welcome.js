@@ -1,18 +1,10 @@
-var app = angular.module('Testy', []);
+var app = angular.module('Chomp', []);
 
 app.controller('PostsController', ['$scope', '$http', function($scope, $http){
   $http.get('/posts').then(function(response){
+    console.log(response.data);
     var data = response.data;
     $scope.posts = data.posts;
   });
-
-  // $scope.newPost = {};
-
-  // $scope.createPost = function(){
-  //   $http.post('/posts', {post: $scope.newPost}).then(function(response){
-  //     var data = response.data;
-  //     $scope.posts.push( data );
-  //   });
-  // };
 
 }]);
